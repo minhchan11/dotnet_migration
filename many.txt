@@ -1,0 +1,30 @@
+public class PlayerTeam
+   {
+       public int playerTeamId { get; set; }
+       public int playerId { get; set; }
+       public Player Player { get; set; }
+
+       public string teamId { get; set; }
+       public Team Team { get; set; }
+   }
+
+   namespace SportLeague.Models
+{
+    [Table("Players")]
+    public class Player
+    {
+
+        [Key]
+        public int playerId { get; set; }
+        public string name { get; set; }
+        public int teamId { get; set; }
+        public virtual Team Team { get; set; }
+
+        public List<PlayerTeam> PlayerTeams { get; set; }
+
+    }
+}
+
+<p>@foreach (var playerteam in @Model.PlayerTeams)
+{ @playerteam.Team.name }
+    </p>
